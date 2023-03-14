@@ -25,7 +25,6 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
-
   if (query.toLowerCase().includes("plus")) {
     query = query.replace("What is ", "");
     query = query.replace("plus ", "");
@@ -38,6 +37,18 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
+  if (query.toLowerCase().includes("minus")) {
+    query = query.replace("What is ", "");
+    query = query.replace("minus ", "");
+    query = query.replace("?", "");
+    // 78 93
+    var splitstring : string[] = query.split(" ", 2);
+    
+    return (
+      String(parseInt(splitstring[0]) - parseInt(splitstring[1]))
+    );
+  }
+
   if (query.toLowerCase().includes("multiplied")) {
     query = query.replace("What is ", "");
     query = query.replace("multiplied by ", "");
@@ -47,6 +58,24 @@ export default function QueryProcessor(query: string): string {
     
     return (
       String(parseInt(splitstring[0]) * parseInt(splitstring[1]))
+    );
+  }
+
+  if (query.toLowerCase().includes("asdfasdf")) {
+    query = query.replace("Which of the following numbers is both a square and a cube: ", "");
+    query = query.replace(",", "");
+    query = query.replace("?", "");
+    // 78 93
+    var splitstring : string[] = query.split(" ", 7);
+    var answer : string = "";
+    for (var num of splitstring) {
+      if (Number.isInteger(Math.sqrt(parseInt(num))) && Number.isInteger(Math.cbrt(parseInt(num)))) {
+        answer = answer + num + ",";
+      }
+    }
+
+    return (
+      answer
     );
   }
 
