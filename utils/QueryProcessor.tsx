@@ -37,16 +37,11 @@ export default function QueryProcessor(query: string): string {
     query = query.replace("What is ", "");
     query = query.replace("plus ", "");
     query = query.replace("?", "");
-    // 78 93
+    // 	hat is 45 plus 85 plus 86?
     var splitstring : string[] = query.split(" ", 3);
-    var answer1 = 0;
-
-    for (var num of splitstring) {
-        answer1 = answer1 + parseInt(num);
-    }
     
     return (
-      String(answer1)
+      String(parseInt(splitstring[0]) + parseInt(splitstring[1]) + parseInt(splitstring[2]))
     );
   }
 
