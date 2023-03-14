@@ -25,5 +25,18 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
+
+  if (query.toLowerCase().includes("plus")) {
+    query.replace("What is ", "");
+    query.replace("plus ", "");
+    query.replace("?", "");
+    // 78 93
+    var splitstring : string[] = query.split(" ", 2);
+    
+    return (
+      String(parseInt(splitstring[0]) + parseInt(splitstring[1]))
+    );
+  }
+
   return "";
 }
