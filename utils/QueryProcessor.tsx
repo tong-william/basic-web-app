@@ -61,7 +61,7 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
-  if (query.toLowerCase().includes("asdfasdf")) {
+  if (query.toLowerCase().includes("square and a cube")) {
     query = query.replace("Which of the following numbers is both a square and a cube: ", "");
     query = query.replace(",", "");
     query = query.replace("?", "");
@@ -74,9 +74,11 @@ export default function QueryProcessor(query: string): string {
       }
     }
 
-    return (
-      answer
-    );
+    if (answer.length > 0) {
+      return (
+        answer.substring(0, answer.length - 1)
+      );
+    }
   }
 
   return "";
