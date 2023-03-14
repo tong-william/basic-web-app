@@ -1,3 +1,11 @@
+function isPrime(num : string){
+  var n = parseInt(num);
+  for(let i = 2; i < n;i++){
+    if(n % i === 0)
+    return 'notPrime'
+    return 'prime'
+  }
+}
 export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("shakespeare")) {
     return (
@@ -70,6 +78,26 @@ export default function QueryProcessor(query: string): string {
     var answer : string = "";
     for (var num of splitstring) {
       if (Number.isInteger(Math.sqrt(parseInt(num))) && Number.isInteger(Math.cbrt(parseInt(num)))) {
+        answer = answer + num + ",";
+      }
+    }
+
+    if (answer.length > 0) {
+      return (
+        answer.substring(0, answer.length - 1)
+      );
+    }
+  }
+
+  if (query.toLowerCase().includes("primes")) {
+    query = query.replace("Which of the following numbers are primes: ", "");
+    query = query.replace(",", "");
+    query = query.replace("?", "");
+    // 78 93
+    var splitstring : string[] = query.split(" ", 7);
+    var answer : string = "";
+    for (var num of splitstring) {
+      if (isPrime(num)) {
         answer = answer + num + ",";
       }
     }
