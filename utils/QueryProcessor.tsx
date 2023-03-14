@@ -74,6 +74,18 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
+  if (query.toLowerCase().includes("power")) {
+    query = query.replace("What is ", "");
+    query = query.replace("to the power of ", "");
+    query = query.replace("?", "");
+    // 78 93
+    var splitstring : string[] = query.split(" ", 2);
+    
+    return (
+      String(Math.pow(parseInt(splitstring[0]), parseInt(splitstring[1])))
+    );
+  }
+
   if (query.toLowerCase().includes("square and a cube")) {
     query = query.replace("Which of the following numbers is both a square and a cube: ", "");
     query = query.replace(",", "");
@@ -99,7 +111,7 @@ export default function QueryProcessor(query: string): string {
     query = query.replace(",", "");
     query = query.replace("?", "");
     // 78 93
-    var splitstring : string[] = query.split(" ", 7);
+    var splitstring : string[] = query.split(" ", 5);
     var answer : string = "";
     for (var num of splitstring) {
       if (isPrime(num)) {
