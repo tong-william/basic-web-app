@@ -38,10 +38,15 @@ export default function QueryProcessor(query: string): string {
     query = query.replace("plus ", "");
     query = query.replace("?", "");
     // 78 93
-    var splitstring : string[] = query.split(" ", 2);
+    var splitstring : string[] = query.split(" ", 3);
+    var answer1 = 0;
+
+    for (var num of splitstring) {
+        answer1 = answer1 + parseInt(num);
+    }
     
     return (
-      String(parseInt(splitstring[0]) + parseInt(splitstring[1]))
+      String(answer1)
     );
   }
 
