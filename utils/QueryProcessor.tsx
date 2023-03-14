@@ -14,9 +14,9 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("which of the following numbers is the largest")) {
-    query.replace("Which of the following numbers is the largest: ", "");
-    query.replace("?", "");
-    query.replace(",", "");
+    query = query.replace("Which of the following numbers is the largest: ", "");
+    query = query.replace("?", "");
+    query = query.replace(",", "");
     // 78 93 38
     var splitstring : string[] = query.split(" ", 3);
     
@@ -27,9 +27,9 @@ export default function QueryProcessor(query: string): string {
 
 
   if (query.toLowerCase().includes("plus")) {
-    query.replace("What is ", "");
-    query.replace("plus ", "");
-    query.replace("?", "");
+    query = query.replace("What is ", "");
+    query = query.replace("plus ", "");
+    query = query.replace("?", "");
     // 78 93
     var splitstring : string[] = query.split(" ", 2);
     
