@@ -1,11 +1,11 @@
 function isPrime(num : string){
   var n = parseInt(num);
   for(let i = 2; i < n;i++){
-    if(n % i === 0)
-    return 'notPrime'
-    return 'prime'
+    if(n % i === 0) return false;
   }
+  return true;
 }
+
 export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("shakespeare")) {
     return (
